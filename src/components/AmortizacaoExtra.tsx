@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SimulacaoRow, calcSAC, calcPRICE, fmt } from "@/lib/mcmv";
+import { CurrencyInput } from "@/components/CurrencyInput";
 import type { SimulacaoInput } from "@/pages/Index";
 
 interface Props {
@@ -87,13 +88,11 @@ export function AmortizacaoExtra({ tabela, inputData }: Props) {
         </div>
         <div>
           <label className={labelClass}>Valor amortizado (R$)</label>
-          <input
-            type="number"
+          <CurrencyInput
             className={inputClass}
             value={valor}
-            onChange={(e) => setValor(Number(e.target.value))}
+            onChange={setValor}
             min={1000}
-            step={1000}
           />
         </div>
         <div>

@@ -14,6 +14,7 @@ import { ResultadoResumo } from "@/components/ResultadoResumo";
 import { TabelaMensal } from "@/components/TabelaMensal";
 import { GraficoEvolucao } from "@/components/GraficoEvolucao";
 import { AmortizacaoExtra } from "@/components/AmortizacaoExtra";
+import { exportarPDF } from "@/lib/exportPdf";
 
 export interface SimulacaoInput {
   valorImovel: number;
@@ -81,6 +82,12 @@ const Index = () => {
     setAbaAtiva("tabela");
   }, []);
 
+  const handleExportPDF = () => {
+    if (resumo && tabela.length > 0 && inputData) {
+      exportarPDF(tabela, resumo, inputData);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -119,6 +126,16 @@ const Index = () => {
               ultima={tabela[tabela.length - 1]}
               fgts={inputData?.fgts || 0}
             />
+
+            {/* Export PDF */}
+            <div className="flex justify-end">
+              <button
+                onClick={handleExportPDF}
+                className="px-4 py-2 rounded-lg border border-border bg-card text-sm font-medium text-foreground hover:bg-secondary/50 transition-colors"
+              >
+                Exportar simulacao em PDF
+              </button>
+            </div>
 
             {/* Tabs */}
             <section className="rounded-xl border border-border bg-card p-5">
