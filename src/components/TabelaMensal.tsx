@@ -5,7 +5,7 @@ interface Props {
 }
 
 export function TabelaMensal({ rows }: Props) {
-  const exibir = rows.filter((_, i) => i < 60 || i === rows.length - 1);
+  const exibir = rows.filter((_, i) => i < 36 || i === rows.length - 1);
 
   return (
     <div>
@@ -35,7 +35,7 @@ export function TabelaMensal({ rows }: Props) {
           </thead>
           <tbody>
             {exibir.map((r, idx) => {
-              const isLast = idx === exibir.length - 1 && rows.length > 60;
+              const isLast = idx === exibir.length - 1 && rows.length > 36;
               return (
                 <tr
                   key={r.mes}
@@ -68,7 +68,7 @@ export function TabelaMensal({ rows }: Props) {
         </table>
       </div>
       <p className="text-[11px] text-muted-foreground mt-2">
-        Exibindo os primeiros 60 meses + ultimo. Valores sem correcao pela TR.
+        Exibindo os primeiros 36 meses + ultimo. Valores sem correcao pela TR.
       </p>
     </div>
   );

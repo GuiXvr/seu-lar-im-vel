@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaixaMCMV } from "@/lib/mcmv";
+import { CurrencyInput } from "@/components/CurrencyInput";
 import type { SimulacaoInput } from "@/pages/Index";
 
 interface SimuladorFormProps {
@@ -42,24 +43,20 @@ export function SimuladorForm({ faixa, onCalcular }: SimuladorFormProps) {
       <div className="grid grid-cols-2 gap-3 mb-3">
         <div>
           <label className={labelClass}>Valor do imovel (R$)</label>
-          <input
-            type="number"
+          <CurrencyInput
             className={inputClass}
             value={valorImovel}
-            onChange={(e) => setValorImovel(Number(e.target.value))}
+            onChange={setValorImovel}
             min={50000}
-            step={1000}
           />
         </div>
         <div>
           <label className={labelClass}>Entrada (R$)</label>
-          <input
-            type="number"
+          <CurrencyInput
             className={inputClass}
             value={entrada}
-            onChange={(e) => setEntrada(Number(e.target.value))}
+            onChange={setEntrada}
             min={0}
-            step={1000}
           />
         </div>
       </div>
@@ -108,13 +105,11 @@ export function SimuladorForm({ faixa, onCalcular }: SimuladorFormProps) {
         </div>
         <div>
           <label className={labelClass}>Renda familiar (R$)</label>
-          <input
-            type="number"
+          <CurrencyInput
             className={inputClass}
             value={renda}
-            onChange={(e) => setRenda(Number(e.target.value))}
+            onChange={setRenda}
             min={1000}
-            step={500}
           />
         </div>
         <div>
@@ -133,13 +128,11 @@ export function SimuladorForm({ faixa, onCalcular }: SimuladorFormProps) {
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div>
           <label className={labelClass}>FGTS disponivel (R$)</label>
-          <input
-            type="number"
+          <CurrencyInput
             className={inputClass}
             value={fgts}
-            onChange={(e) => setFgts(Number(e.target.value))}
+            onChange={setFgts}
             min={0}
-            step={1000}
           />
         </div>
         <div />
